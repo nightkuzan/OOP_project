@@ -1,4 +1,5 @@
-package gaming.bigtuugame.game;
+package bigtuugame;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

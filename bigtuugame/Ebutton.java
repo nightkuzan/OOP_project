@@ -1,4 +1,5 @@
-package gaming.bigtuugame;
+package bigtuugame;
+
 
 import java.awt.Color;
 import javax.swing.JButton;

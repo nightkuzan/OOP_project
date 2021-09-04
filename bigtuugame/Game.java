@@ -1,4 +1,5 @@
-package gaming.bigtuugame.game;
+package bigtuugame;
+
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -83,7 +84,7 @@ public class Game extends JPanel implements KeyListener {
             double flexy = 420-(barrierheight);
             barrierset[i] = new Barrier((int) barrierlocate, (int)flexy, 30,(int) barrierheight, gamespeed,this);
            
-            locatePadding += 300;
+            locatePadding += 500;
         }
         return barrierset;
     }

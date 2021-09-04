@@ -1,4 +1,5 @@
-package gaming.bigtuugame;
+package bigtuugame;
+
 import javax.swing.JLabel;
 public class Elabel extends JLabel {
     private static final long serialVersionUID = 1L;

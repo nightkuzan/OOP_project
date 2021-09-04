@@ -1,4 +1,4 @@
-package gaming.bigtuugame.game;
+package bigtuugame;
 
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;

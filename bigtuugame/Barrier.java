@@ -1,4 +1,5 @@
-package gaming.bigtuugame.game;
+package bigtuugame;
+
 
 import javax.swing.Timer;
 import javax.swing.JPanel;

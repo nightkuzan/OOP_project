@@ -1,4 +1,5 @@
-package gaming.bigtuugame.game;
+package bigtuugame;
+
 
 public class Event {
     public static boolean hitCheck(CharOne char1, Barrier barrier) {

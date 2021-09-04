@@ -1,4 +1,5 @@
-package gaming.bigtuugame;
+package bigtuugame;
+
 import java.awt.Font;
 import java.io.File;
 public class Element {
