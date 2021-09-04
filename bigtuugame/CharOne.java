@@ -11,17 +11,35 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class CharOne {
-    public long jumpPress = 0;
-    public int countJump = 0;
-    public boolean jumpExceeded = false;
+    private JPanel game;
+    private long jumpPress = 0;
+    private int countJump = 0;
+    private boolean jumpExceeded = false;
     public int x, y, char1Size, char1health,point;
     private int jumpHight = 150;
+    private ActionListener timerAction = (ActionListener) new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    timeHelper.stop();
+                    y += jumpHight;
+                    game.repaint();
+                    if (--countJump == 0){
+                        jumpExceeded = false;
+                    } else if (countJump == 1) {
+                        timeHelper.start();
+                    }
+                }
+            };
+    private Timer time = new Timer(350, timerAction);
+    private Timer timeHelper = new Timer(350, timerAction);
 
-    public CharOne() {
-
+    public CharOne(JPanel game) {
+        time.setRepeats(false);
+        this.game = game;
     }
 
-    public CharOne(int x, int y, int char1Size, int char1health, int point) {
+    public CharOne(JPanel game, int x, int y, int char1Size, int char1health, int point) {
+        this(game);
         this.x = x;
         this.y = y;
         this.char1Size = char1Size;
@@ -29,27 +47,17 @@ public class CharOne {
         this.point = point;
     }
 
-    public void jump(JPanel game) {
+    public void jump() {
         if (!jumpExceeded) {
+            time.stop();
+
             this.y -= jumpHight;
-            Timer time = new Timer(350, (ActionListener) new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    y += jumpHight;
-                    game.repaint();
-                    --countJump;
-                    if (countJump == 0){
-                        jumpExceeded = false;
-                    } 
-                }
-            });
             game.repaint();
             jumpPress = System.currentTimeMillis();
-            countJump++;
-            if (countJump == 2) {
+            if (++countJump == 2) {
                 jumpExceeded = true;
             }
-            time.setRepeats(false);
+
             time.start();
         } 
     }

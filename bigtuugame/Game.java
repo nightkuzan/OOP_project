@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JPanel implements KeyListener {
     private static final long serialVersionUID = 1L;
     int gamespeed = 25;
+    CharOne char1;
 
-    CharOne char1 = new CharOne(100, 300, 120, 100,0);
     // Barrier barrier = new Barrier(900, 300, 40, 70, 25,this);
     Barrier[] barrierset = buildbarrier(6);
 
@@ -24,6 +24,8 @@ public class Game extends JPanel implements KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
         this.setLayout(null);
+
+        char1 = new CharOne(this, 100, 300, 120, 100,0);
     }
 
     @Override
@@ -97,7 +99,7 @@ public class Game extends JPanel implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 87) {
-        char1.jump(this);
+            char1.jump();
         }
     }
 
