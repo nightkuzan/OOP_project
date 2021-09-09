@@ -15,7 +15,7 @@ public class Display extends JFrame implements ActionListener{
 	}
 	
 	private void setting() {
-		this.setTitle("คนดีย์ Run!!");
+		this.setTitle("KonDue Run!!");
 		this.setSize(size);
         this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

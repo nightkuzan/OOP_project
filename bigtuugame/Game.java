@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Game extends JPanel implements KeyListener {
     private static final long serialVersionUID = 1L;
-    int gamespeed = 25;
+    int gamespeed = 35;
     long point = 0;
     static Display display;
     CharOne char1;
@@ -42,7 +42,7 @@ public class Game extends JPanel implements KeyListener {
             g2.setColor(Color.BLACK);
             drawchar1health(g2);
             g2.setStroke(new BasicStroke(0.0f));
-            g2.drawString("Score: "+char1.point,1100,40);
+            g2.drawString("Score: "+this.point,1100,40);
             g2.setColor(Color.RED);
 
             g2.drawImage(char1.getImage(),char1.x, char1.y,
