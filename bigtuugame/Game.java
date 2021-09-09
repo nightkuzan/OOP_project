@@ -59,7 +59,7 @@ public class Game extends JPanel implements KeyListener {
                     g2.drawImage(char1.getImage(),500, 500,200,200,null);
                     // g2.setColor(Color.RED);
                     // g2.drawRect(0, 0, 1000, 800);
-                    char1.char1health -= 50;
+                    char1.char1health -= 100;
                     if (char1.char1health<=0){
                         display.endGame(this.point);
                         char1.char1health = new CharOne().char1health;
