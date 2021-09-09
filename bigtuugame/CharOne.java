@@ -13,10 +13,15 @@ import javax.swing.Timer;
 public class CharOne {
     private JPanel game;
     private long jumpPress = 0;
+    public long point=0;
     private int countJump = 0;
     private boolean jumpExceeded = false;
-    public int x, y, char1Size, char1health,point;
-    private int jumpHight = 150;
+    public int x, y, char1Size, char1health;
+    private int jumpHight = 110;
+
+    public CharOne(){
+        
+    }
     private ActionListener timerAction = (ActionListener) new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -31,14 +36,14 @@ public class CharOne {
                 }
             };
     private Timer time = new Timer(350, timerAction);
-    private Timer timeHelper = new Timer(350, timerAction);
+    private Timer timeHelper = new Timer(175, timerAction);
 
     public CharOne(JPanel game) {
         time.setRepeats(false);
         this.game = game;
     }
 
-    public CharOne(JPanel game, int x, int y, int char1Size, int char1health, int point) {
+    public CharOne(JPanel game, int x, int y, int char1Size, int char1health, long point) {
         this(game);
         this.x = x;
         this.y = y;
@@ -67,7 +72,7 @@ public class CharOne {
     public BufferedImage getImage() {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResource("img/char1.png"));
+            image = ImageIO.read(getClass().getResource("img/pp11.gif"));
             return image;
         } catch (Exception e) {
             e.printStackTrace();
