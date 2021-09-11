@@ -72,7 +72,7 @@ public class CharOne {
     public BufferedImage getImage() {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResource("img/pp11.gif"));
+            image = ImageIO.read(getClass().getResource("img/3934345.png"));
             return image;
         } catch (Exception e) {
             e.printStackTrace();

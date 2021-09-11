@@ -59,7 +59,7 @@ public class Game extends JPanel implements KeyListener {
                     g2.drawImage(char1.getImage(),500, 500,200,200,null);
                     // g2.setColor(Color.RED);
                     // g2.drawRect(0, 0, 1000, 800);
-                    char1.char1health -= 100;
+                    char1.char1health -= 10;
                     if (char1.char1health<=0){
                         display.endGame(this.point);
                         char1.char1health = new CharOne().char1health;
@@ -92,9 +92,9 @@ public class Game extends JPanel implements KeyListener {
         double locatePadding = 0.0;
         for (int i = 0; i < barriernumber; i++) {
             double barrierlocate = 1750 + Math.floor(Math.random() * 200) + locatePadding;
-            double barrierheight = (40 + Math.floor(Math.random() * 50));
-            double flexy = 538-(barrierheight);
-            barrierset[i] = new Barrier((int) barrierlocate, (int)flexy, 50,(int) barrierheight, gamespeed,this);
+            double barrierheight = (70 + Math.floor(Math.random() * 50));
+            double flexy = 553-(barrierheight);
+            barrierset[i] = new Barrier((int) barrierlocate, (int)flexy, 80,(int) barrierheight, gamespeed,this);
            
             locatePadding += 1000;
         }

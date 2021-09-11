@@ -22,7 +22,7 @@ public class Background {
     public BufferedImage getImageBarrier() {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResource("img/ba1.png"));
+            image = ImageIO.read(getClass().getResource("img/3934343.png"));
             return image;
         } catch (Exception e) {
             e.printStackTrace();
