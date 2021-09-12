@@ -53,7 +53,7 @@ public class CharOne {
     }
 
     public void jump() {
-        if (!jumpExceeded) {
+        if (!jumpExceeded) {   //check double jump
             time.stop();
 
             this.y -= jumpHight;
@@ -72,7 +72,7 @@ public class CharOne {
     public BufferedImage getImage() {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResource("img/3934345.png"));
+            image = ImageIO.read(getClass().getResource("img/3934345.png")); //set image character
             return image;
         } catch (Exception e) {
             e.printStackTrace();

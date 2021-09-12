@@ -28,7 +28,7 @@ public class Barrier {
             public void actionPerformed(ActionEvent e) {
                 x -= speed;
                 game.repaint();
-                if (x < 0){
+                if (x < 0){  //check if barrier pass character
                     x = xStart;
                     resetisHit();
                 }
@@ -38,10 +38,10 @@ public class Barrier {
     }
 
     public void setisHit(){
-        this.isHit = true;
+        this.isHit = true; //check hit
     }
     public void resetisHit(){
-        this.isHit = false;
+        this.isHit = false; //resetHit
     }
 
     public boolean getisHit() {

@@ -10,7 +10,7 @@ public class EleButton extends JButton {
 			super(title);
 			this.setBackground(new Color(2, 117, 216));
 			this.setForeground(Color.white);
-			this.setFont(Element.getFont(size));
+			// this.setFont(Element.getFont(size));
 			this.setBounds(x, y, width, height);
 		}
 }

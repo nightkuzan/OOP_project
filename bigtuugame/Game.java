@@ -21,7 +21,8 @@ public class Game extends JPanel implements KeyListener {
 
     // Barrier barrier = new Barrier(900, 300, 40, 70, 25,this);
     Barrier[] barrierset = buildbarrier(6);
-    public Game() {
+    
+    public Game() {  // Set inner Display
         this.setBounds(0, 0, 1280, 720);
         this.addKeyListener(this);
         this.setFocusable(true);
@@ -37,30 +38,25 @@ public class Game extends JPanel implements KeyListener {
             Graphics2D g2 = (Graphics2D) g;
             // Point
             // g2.setFont(Element.getFont(30));
-            g2.drawImage(background.getImage(),0,0,1280,720,null);
+            g2.drawImage(background.getImage(),0,0,1280,720,null); //Set Background
 
             g2.setColor(Color.BLACK);
-            drawchar1health(g2);
-            g2.setStroke(new BasicStroke(0.0f));
-            g2.drawString("Score: "+this.point,1100,40);
+            drawchar1health(g2);  // call method for draw health
+            g2.setStroke(new BasicStroke(0.0f));  // make the edge thickness
+            g2.drawString("Score: "+this.point,1100,40); // write Score and set x, y point
             g2.setColor(Color.RED);
 
             g2.drawImage(char1.getImage(),char1.x, char1.y,
-                    100,120,null);
-            // g2.drawRect(char1.x, char1.y, char1.char1Size, char1.char1Size);
+                    100,120,null);  // Set Character Image
             g2.setColor(Color.BLACK);
-            g2.drawString("HP " + char1.char1health + "%", 40, 40);
-            for (Barrier barrier : barrierset) {
-                this.point+=1;
-                // g2.drawRect(barrier.x, barrier.y, barrier.width, barrier.height);
-                g2.drawImage(background.getImageBarrier(),barrier.x, barrier.y,barrier.width, barrier.height,null);
+            g2.drawString("HP " + char1.char1health + "%", 40, 40); // write Hp and set x, y axis
+            for (Barrier barrier : barrierset) {  // loop for build barrier
+                this.point+=1; // make point increase
+                g2.drawImage(background.getImageBarrier(),barrier.x, barrier.y,barrier.width, barrier.height,null); //set image barrier
                 if (Event.hitCheck(char1, barrier) && !barrier.getisHit()) {
-                    barrier.setisHit();
-                    g2.drawImage(char1.getImage(),500, 500,200,200,null);
-                    // g2.setColor(Color.RED);
-                    // g2.drawRect(0, 0, 1000, 800);
-                    char1.char1health -= 10;
-                    if (char1.char1health<=0){
+                    barrier.setisHit(); //check hit
+                    char1.char1health -= 10;  //decrease hp if character hit the barrier
+                    if (char1.char1health<=0){ // check health = 0  will die and go to ask for play again 
                         display.endGame(this.point);
                         char1.char1health = new CharOne().char1health;
                         this.point=0;
@@ -72,14 +68,10 @@ public class Game extends JPanel implements KeyListener {
         }
     }
 
-    // private void drawBG(Graphics2D g2)throws IOException{
-    // g2.drawImage(ImageIO.read(new File("img/bg_sunset.png")),0,0,2000,1000,null)
-    // g2.drawImage(building)
-    // }
 
     private void drawchar1health(Graphics2D g2){
         try{
-            g2.setStroke(new BasicStroke(5.0f));
+            g2.setStroke(new BasicStroke(5.0f)); 
             g2.setColor(Color.RED);
             g2.drawRect(100,20,200,35);
         }catch (Exception e) {
@@ -91,10 +83,11 @@ public class Game extends JPanel implements KeyListener {
         Barrier[] barrierset = new Barrier[barriernumber];
         double locatePadding = 0.0;
         for (int i = 0; i < barriernumber; i++) {
-            double barrierlocate = 1750 + Math.floor(Math.random() * 200) + locatePadding;
-            double barrierheight = (70 + Math.floor(Math.random() * 50));
-            double flexy = 553-(barrierheight);
-            barrierset[i] = new Barrier((int) barrierlocate, (int)flexy, 80,(int) barrierheight, gamespeed,this);
+            double barrierlocate = 1750 + Math.floor(Math.random() * 200) + locatePadding;  //random x-axis for barrier
+            double barrierheight = (70 + Math.floor(Math.random() * 50)); //random y-axis for barrier
+            double flexy = 553-(barrierheight); 
+            barrierset[i] = new Barrier((int) barrierlocate, (int)flexy, 80,(int) barrierheight, gamespeed,this); 
+            // build barrier
            
             locatePadding += 1000;
         }
@@ -107,7 +100,7 @@ public class Game extends JPanel implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {//check if pressed key w spacebar or up arrow
         if (e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 87) {
             char1.jump();
         }
