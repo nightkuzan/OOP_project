@@ -28,6 +28,7 @@ public class CharOne {
                     timeHelper.stop();
                     y += jumpHight;
                     game.repaint();
+                    
                     if (--countJump == 0){
                         jumpExceeded = false;
                     } else if (countJump == 1) {
@@ -57,6 +58,7 @@ public class CharOne {
             time.stop();
 
             this.y -= jumpHight;
+
             game.repaint();
             jumpPress = System.currentTimeMillis();
             if (++countJump == 2) {

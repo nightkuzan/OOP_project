@@ -28,7 +28,7 @@ public class Game extends JPanel implements KeyListener {
         this.setFocusable(true);
         this.setLayout(null);
 
-        char1 = new CharOne(this, 100, 420, 120, 100,0);
+        char1 = new CharOne(this, 100, 420, 120, 100,0); //set the character
     }
 
     @Override
@@ -50,12 +50,14 @@ public class Game extends JPanel implements KeyListener {
                     100,120,null);  // Set Character Image
             g2.setColor(Color.BLACK);
             g2.drawString("HP " + char1.char1health + "%", 40, 40); // write Hp and set x, y axis
+
             for (Barrier barrier : barrierset) {  // loop for build barrier
                 this.point+=1; // make point increase
                 g2.drawImage(background.getImageBarrier(),barrier.x, barrier.y,barrier.width, barrier.height,null); //set image barrier
                 if (Event.hitCheck(char1, barrier) && !barrier.getisHit()) {
-                    barrier.setisHit(); //check hit
-                    char1.char1health -= 10;  //decrease hp if character hit the barrier
+
+                    barrier.setisHit(); //check hit 
+                    char1.char1health -= 100;  //decrease hp if character hit the barrier
                     if (char1.char1health<=0){ // check health = 0  will die and go to ask for play again 
                         display.endGame(this.point);
                         char1.char1health = new CharOne().char1health;
