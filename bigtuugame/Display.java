@@ -10,10 +10,21 @@ public class Display extends JFrame implements ActionListener{
 	private Dimension size = new Dimension(1280,720);
 		
 	public Display() {
+		this.homePage();
+		//this.setting();
+		this.getContentPane().add(new Game());
+	}
+	public Display(boolean status) {
 		this.setting();
 		this.getContentPane().add(new Game());
 	}
-	
+	private void homePage() {
+		java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Homepage().setVisible(true);
+            }
+        });
+	}
 	private void setting() {
 		this.setTitle("KonDue Run!!"); //setTitle("KonDue Run!!")
 		this.setSize(size);
