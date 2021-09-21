@@ -40,7 +40,7 @@ public class Game extends JPanel implements KeyListener {
             // Point
             // g2.setFont(Element.getFont(30));
             g2.drawImage(background.getImage(),0,0,1280,720,null); //Set Background
-
+            
             g2.setColor(Color.BLACK);
             drawchar1health(g2);  // call method for draw health
             g2.setStroke(new BasicStroke(0.0f));  // make the edge thickness
