@@ -1,5 +1,7 @@
 package bigtuugame;
 
+import java.awt.event.*;
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,24 +10,12 @@ import javax.swing.JFrame;
 public class Display extends JFrame implements ActionListener{
     private static final long serialVersionUID = 1L;
 	private Dimension size = new Dimension(1280,720);
-		
+	
 	public Display() {
-		this.homePage();
-		//this.setting();
-		this.getContentPane().add(new Game());
-	}
-	public Display(boolean status) {
 		this.setting();
 		this.getContentPane().add(new Game());
 	}
-	private void homePage() {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Homepage().setVisible(true);
-            }
-        });
-	}
-	private void setting() {
+	public void setting() {
 		this.setTitle("KonDue Run!!"); //setTitle("KonDue Run!!")
 		this.setSize(size);
         this.setResizable(false);
@@ -33,7 +23,7 @@ public class Display extends JFrame implements ActionListener{
 		this.setLocation(280,100);
 		this.setVisible(true);
 	}
-	
+	 
 	private void removeContent() {
 		this.getContentPane().removeAll();
 		this.getContentPane().repaint();

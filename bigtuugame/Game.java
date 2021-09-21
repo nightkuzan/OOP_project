@@ -16,6 +16,7 @@ public class Game extends JPanel implements KeyListener {
     int gamespeed = 35;
     long point = 0;
     static Display display;
+    static Homepage homepage;
     CharOne char1;
     Background background = new Background();
 
@@ -39,7 +40,7 @@ public class Game extends JPanel implements KeyListener {
             // Point
             // g2.setFont(Element.getFont(30));
             g2.drawImage(background.getImage(),0,0,1280,720,null); //Set Background
-
+            
             g2.setColor(Color.BLACK);
             drawchar1health(g2);  // call method for draw health
             g2.setStroke(new BasicStroke(0.0f));  // make the edge thickness
@@ -59,7 +60,8 @@ public class Game extends JPanel implements KeyListener {
                     barrier.setisHit(); //check hit 
                     char1.char1health -= 100;  //decrease hp if character hit the barrier
                     if (char1.char1health<=0){ // check health = 0  will die and go to ask for play again 
-                        display.endGame(this.point);
+                        //display.endGame(this.point);
+                        homepage.clear(point);
                         char1.char1health = new CharOne().char1health;
                         this.point=0;
                     }
@@ -114,6 +116,8 @@ public class Game extends JPanel implements KeyListener {
     }
 
     public static void main(String[] args){
-        display = new Display();
+        //display = new Display(display);
+        
+        homepage = new Homepage();
     }
 }
