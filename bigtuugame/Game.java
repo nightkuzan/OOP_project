@@ -17,7 +17,7 @@ public class Game extends JPanel implements KeyListener {
     long point = 0;
     static Display display;
     static Homepage homepage;
-    CharOne char1;
+    CharOne char1; 
     Background background = new Background();
 
     // Barrier barrier = new Barrier(900, 300, 40, 70, 25,this);
@@ -40,7 +40,7 @@ public class Game extends JPanel implements KeyListener {
             // Point
             // g2.setFont(Element.getFont(30));
             g2.drawImage(background.getImage(),0,0,1280,720,null); //Set Background
-            
+
             g2.setColor(Color.BLACK);
             drawchar1health(g2);  // call method for draw health
             g2.setStroke(new BasicStroke(0.0f));  // make the edge thickness
@@ -56,22 +56,22 @@ public class Game extends JPanel implements KeyListener {
                 this.point+=1; // make point increase
                 g2.drawImage(background.getImageBarrier(),barrier.x, barrier.y,barrier.width, barrier.height,null); //set image barrier
                 if (Event.hitCheck(char1, barrier) && !barrier.getisHit()) {
-
                     barrier.setisHit(); //check hit 
                     char1.char1health -= 100;  //decrease hp if character hit the barrier
                     if (char1.char1health<=0){ // check health = 0  will die and go to ask for play again 
-                        //display.endGame(this.point);
                         homepage.clear(point);
                         char1.char1health = new CharOne().char1health;
                         this.point=0;
                     }
+                    
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+ 
+    
 
     private void drawchar1health(Graphics2D g2){
         try{
@@ -113,11 +113,10 @@ public class Game extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
+    } 
 
     public static void main(String[] args){
-        //display = new Display(display);
-        
         homepage = new Homepage();
+
     }
 }
