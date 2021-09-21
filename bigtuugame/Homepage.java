@@ -10,12 +10,17 @@
  */
 package bigtuugame;
 
+import java.awt.event.*;
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-public class Homepage extends javax.swing.JFrame {
-
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+public class Homepage extends javax.swing.JFrame{
+    Display display;
     /**
      * Creates new form homepage
      */
@@ -33,11 +38,11 @@ public class Homepage extends javax.swing.JFrame {
     private void initComponents() {
         this.setTitle("Kondue Run!!");
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        setVisible(true);
+        //getImageHomepage();
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("PLAY");
@@ -47,17 +52,6 @@ public class Homepage extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Tutorial");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Credits");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,9 +59,8 @@ public class Homepage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(576, 576, 576)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    )
                 .addContainerGap(611, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,35 +69,26 @@ public class Homepage extends javax.swing.JFrame {
                 .addContainerGap(368, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
         );
 
         pack();
-    }// </editor-fold>                        
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {         
-        boolean status=false;
-        status = true;                                
-        Display display = new Display(status);
-        setVisible(false);
-    }                                        
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
+    }// </editor-fold>                   
+    public void clear(long point){
+        display.endGame(point);
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        display = new Display();                               
+    }          
 
     /**
      * @param args the command line arguments
      */
     
-
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     // End of variables declaration        
     
 }
