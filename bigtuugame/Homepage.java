@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 
-/**
- *
- * @author chotong
- */
+
 package bigtuugame;
 
 import java.awt.event.*;
