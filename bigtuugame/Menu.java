@@ -29,9 +29,13 @@ public class Menu extends JPanel {
             EleButton restart = new EleButton("restart", 15, 540, 300, 200, 50);//write string and set x,y axis and width and height 
             restart.addActionListener(main);
 
+            EleButton homepage = new EleButton("home",15,540,400,200,50);
+            homepage.addActionListener(main);
+
             this.add(showPoint);
             this.add(status);
             this.add(restart);
+            this.add(homepage);
         } catch (Exception e) {
             e.printStackTrace();
         }

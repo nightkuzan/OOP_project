@@ -41,6 +41,11 @@ public class Display extends JFrame implements ActionListener{
 			this.getContentPane().add(game);
 			game.requestFocus();
 		}
+		else if(e.getActionCommand().equals("home")) {
+			removeContent();
+			dispose();
+			Homepage homepage = new Homepage();
+		}
 	}
 
 
