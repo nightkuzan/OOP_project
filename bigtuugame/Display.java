@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 public class Display extends JFrame implements ActionListener{
-    private static final long serialVersionUID = 1L;
 	private Dimension size = new Dimension(1280,720);
 	
 	public Display() {
