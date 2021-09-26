@@ -29,14 +29,5 @@ public class Background {
         }
         return image;
 	}
-    // public BufferedImage getImageHomepage() {
-    //     BufferedImage image = null;
-    //     try {
-    //         image = ImageIO.read(getClass().getResource("img/playreal.png"));
-    //         return image;
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     return image;
-    // }
+
 }

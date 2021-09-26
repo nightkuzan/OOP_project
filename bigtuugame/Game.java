@@ -1,14 +1,19 @@
 package bigtuugame;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.IOException;
-import java.io.*;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.util.concurrent.TimeUnit;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JOptionPane;
+// import javax.sound.sampled.Clip;
+import javax.swing.JPanel;
 
 public class Game extends JPanel implements KeyListener {
     int gamespeed = 35;
@@ -26,8 +31,8 @@ public class Game extends JPanel implements KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
         this.setLayout(null);
-
-        char1 = new CharOne(this, 100,420, 120, 100, 0); // set the character
+        playMusic("sound/bg.wav");
+        char1 = new CharOne(this, 100, 420, 120, 100, 0); // set the character
     }
 
     @Override
@@ -80,7 +85,9 @@ public class Game extends JPanel implements KeyListener {
             e.printStackTrace();
         }
     }
-    double barrierheight,flexy;
+
+    double barrierheight, flexy;
+
     public Barrier[] buildbarrier(int barriernumber) {
         Barrier[] barrierset = new Barrier[barriernumber];
         double locatePadding = 0.0;
@@ -119,6 +126,24 @@ public class Game extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public void playMusic(String musicLocation) {
+        try {
+            
+            File musicPath = new File(getClass().getResource("sound/bg.wav").getPath());
+
+            if (musicPath.exists()) {
+                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+            } else {
+                System.out.println("Cant' find file");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

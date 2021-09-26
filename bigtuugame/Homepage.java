@@ -15,6 +15,9 @@ import javax.swing.JFrame;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.*;
 
 public class Homepage extends javax.swing.JFrame {
     Display display;
@@ -64,8 +67,11 @@ public class Homepage extends javax.swing.JFrame {
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28).addGap(28, 28, 28).addGap(146, 146, 146)));
 
+
         pack();
     }// </editor-fold>
+
+
 
     public void clear(long point) {
         display.endGame(point);
