@@ -31,12 +31,13 @@ public class Game extends JPanel implements KeyListener {
         this.addKeyListener(this);
         this.setFocusable(true);
         this.setLayout(null);
-        playMusic("sound/bg.wav");
         char1 = new CharOne(this, 100, 420, 120, 100, 0); // set the character
+
     }
 
     @Override
     public void paint(Graphics g) {
+
         try {
             super.paint(g);
             Graphics2D g2 = (Graphics2D) g;
@@ -76,6 +77,7 @@ public class Game extends JPanel implements KeyListener {
     }
 
     private void drawchar1health(Graphics2D g2) {
+
         try {
             g2.setColor(Color.RED);
             g2.fillRect(100, 20, a, 25);
@@ -120,6 +122,7 @@ public class Game extends JPanel implements KeyListener {
     public void keyPressed(KeyEvent e) {// check if pressed key w spacebar or up arrow
         if (e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 87) {
             char1.jump();
+            playeffectJump("sound/jump.wav");
         }
     }
 
@@ -145,9 +148,28 @@ public class Game extends JPanel implements KeyListener {
             ex.printStackTrace();
         }
     }
+    public void playeffectJump(String musicLocation) {
+        try {
+            
+            File musicPath = new File(getClass().getResource("sound/jump.wav").getPath());
+
+            if (musicPath.exists()) {
+                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+            } else {
+                System.out.println("Cant' find file");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         homepage = new Homepage();
+        Game game = new Game();
+        game.playMusic("sound/bg.wav");
 
     }
 }
