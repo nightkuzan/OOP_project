@@ -82,6 +82,7 @@ public class Game extends JPanel implements KeyListener {
             g2.setColor(Color.RED);
             g2.fillRect(100, 20, a, 25);
             g2.setColor(Color.BLACK);
+            g2.setStroke(new BasicStroke(5.0f) );
             g2.drawRect(100, 20, 200, 25);
         } catch (Exception e) {
             e.printStackTrace();
