@@ -19,7 +19,8 @@ public class Display extends JFrame implements ActionListener{
 		this.setSize(size);
         this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocation(280,100);
+		//this.setLocation(280,100);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
 	 

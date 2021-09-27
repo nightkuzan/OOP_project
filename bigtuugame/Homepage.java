@@ -11,13 +11,14 @@ import java.awt.*;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.*;
+import java.io.IOException;
 
 public class Homepage extends javax.swing.JFrame {
     Display display;
@@ -38,20 +39,30 @@ public class Homepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
         this.setTitle("Kondue Run!!");
-        jButton1 = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(1280,720);
         setResizable(false);
         setVisible(true);
+        setLayout(new FlowLayout());
+        setLocationRelativeTo(null);
 
+        jButton1 = new javax.swing.JButton();
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("PLAY");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
+        //set Backgrounds
+        try{
+            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\Users\\choto\\Desktop\\Object-Oriented Programming\\project\\OOP_project\\bigtuugame\\img\\playreal.png")))));
+            }catch(IOException e)
+        {
+            e.printStackTrace();
+     
+        }
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
@@ -67,11 +78,8 @@ public class Homepage extends javax.swing.JFrame {
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28).addGap(28, 28, 28).addGap(146, 146, 146)));
 
-
         pack();
     }// </editor-fold>
-
-
 
     public void clear(long point) {
         display.endGame(point);
