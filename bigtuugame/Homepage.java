@@ -57,27 +57,16 @@ public class Homepage extends javax.swing.JFrame {
         });
         //set Backgrounds
         try{
-            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\Users\\choto\\Desktop\\Object-Oriented Programming\\project\\OOP_project\\bigtuugame\\img\\playreal.png")))));
+            setContentPane(new JLabel(new ImageIcon(ImageIO.read(getClass().getResource("img/playreal.png")))));
             }catch(IOException e)
         {
             e.printStackTrace();
      
         }
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
-                .createSequentialGroup().addGap(576, 576, 576)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(
-                        jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                        Short.MAX_VALUE))
-                .addContainerGap(611, Short.MAX_VALUE)));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
-                javax.swing.GroupLayout.Alignment.TRAILING,
-                layout.createSequentialGroup().addContainerGap(368, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28).addGap(28, 28, 28).addGap(146, 146, 146)));
-
+        //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        //getContentPane().setLayout(layout);
+        getContentPane().setLayout( new GridBagLayout() );
+        this.add(jButton1, new GridBagConstraints());
         pack();
     }// </editor-fold>
 
