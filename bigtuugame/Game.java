@@ -20,8 +20,8 @@ public class Game extends JPanel implements KeyListener {
     long point = 0;
     static Display display;
     static Homepage homepage;
-    AudioInputStream am = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
-    Clip clipm = AudioSystem.getClip();
+    AudioInputStream am;
+    Clip clipm;
     CharOne char1;
     int a = 200;
     Background background = new Background();
@@ -142,7 +142,8 @@ public class Game extends JPanel implements KeyListener {
 
     public void playMusic(String musicLocation) {
         try {
-            
+            am = AudioSystem.getAudioInputStream(getClass().getResource("sound/bgm_change2.wav"));
+            clipm = AudioSystem.getClip();
             clipm.open(am);
             clipm.start();
             
