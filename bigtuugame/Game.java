@@ -64,7 +64,7 @@ public class Game extends JPanel implements KeyListener {
                     char1.char1health -= rh; // decrease hp if character hit the barrier
                     a -= (rh * 2);
                     if (char1.char1health <= 0) { // check health = 0 will die and go to ask for play again
-                        playeffectDeath("sound/Cha_death_1.wav");
+                        playeffectDeath("sound/death.wav");
                         homepage.clear(point);
                         char1.char1health = new CharOne().char1health;
                         this.point = 0;
