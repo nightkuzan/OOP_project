@@ -20,6 +20,8 @@ public class Game extends JPanel implements KeyListener {
     long point = 0;
     static Display display;
     static Homepage homepage;
+    AudioInputStream am = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
+    Clip clipm = AudioSystem.getClip();
     CharOne char1;
     int a = 200;
     Background background = new Background();
@@ -67,8 +69,8 @@ public class Game extends JPanel implements KeyListener {
                     char1.char1health -=100;
                     if (char1.char1health <= 0) { // check health = 0 will die and go to ask for play again
                         playeffectDeath("sound/Cha_death_1.wav");
-                        playMusic("sound/bgm_change2.wav");
                         homepage.clear(point);
+                        clipm.close();
                         char1.char1health = new CharOne().char1health;
                         this.point = 0;
                         playeffectLose("sound/b_lose.wav");
@@ -141,17 +143,9 @@ public class Game extends JPanel implements KeyListener {
     public void playMusic(String musicLocation) {
         try {
             
-            File musicPath = new File(getClass().getResource("sound/bgm_change2.wav").getPath());
-            AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-            Clip clip = AudioSystem.getClip();
-
-            if (musicPath.exists()) {
-                clip.open(a);
-                clip.start();
-            } 
-             else {
-                System.out.println("Cant' find file");
-            }
+            clipm.open(am);
+            clipm.start();
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
