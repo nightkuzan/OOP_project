@@ -59,14 +59,20 @@ public class Game extends JPanel implements KeyListener {
                 g2.drawImage(background.getImageBarrier(), barrier.x, barrier.y, barrier.width, barrier.height, null); // set
                 if (Event.hitCheck(char1, barrier) && !barrier.getisHit()) {
                     barrier.setisHit(); // check hit
+                    playeffectHit("sound/ETC_damage03.wav"); 
                     double rh = 0;
-                    rh = (3 + Math.floor(Math.random() * 8));
-                    char1.char1health -= rh; // decrease hp if character hit the barrier
-                    a -= (rh * 2);
+                    // rh = (3 + Math.floor(Math.random() * 8));
+                    // char1.char1health -= rh; // decrease hp if character hit the barrier
+                    // a -= (rh * 2);
+                    char1.char1health -=100;
                     if (char1.char1health <= 0) { // check health = 0 will die and go to ask for play again
+                        playeffectDeath("sound/Cha_death_1.wav");
+                        playMusic("sound/bgm_change2.wav");
                         homepage.clear(point);
                         char1.char1health = new CharOne().char1health;
                         this.point = 0;
+                        playeffectLose("sound/b_lose.wav");
+                        
                     }
 
                 }
@@ -135,14 +141,15 @@ public class Game extends JPanel implements KeyListener {
     public void playMusic(String musicLocation) {
         try {
             
-            File musicPath = new File(getClass().getResource("sound/bg.wav").getPath());
+            File musicPath = new File(getClass().getResource("sound/bgm_change2.wav").getPath());
+            AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+            Clip clip = AudioSystem.getClip();
 
             if (musicPath.exists()) {
-                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
                 clip.open(a);
                 clip.start();
-            } else {
+            } 
+             else {
                 System.out.println("Cant' find file");
             }
         } catch (Exception ex) {
@@ -159,6 +166,62 @@ public class Game extends JPanel implements KeyListener {
                 Clip clip = AudioSystem.getClip();
                 clip.open(a);
                 clip.start();
+                
+            } else {
+                System.out.println("Cant' find file");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void playeffectDeath(String musicLocation) {
+        try {
+            
+            File musicPath = new File(getClass().getResource("sound/Cha_death_1.wav").getPath());
+
+            if (musicPath.exists()) {
+                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+                
+            } else {
+                System.out.println("Cant' find file");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void playeffectHit(String musicLocation){
+        try {
+            
+            File musicPath = new File(getClass().getResource("sound/ETC_damage03.wav").getPath());
+
+            if (musicPath.exists()) {
+                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+                
+            } else {
+                System.out.println("Cant' find file");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void playeffectLose(String musicLocation){
+        try {
+            
+            File musicPath = new File(getClass().getResource("sound/b_lose.wav").getPath());
+
+            if (musicPath.exists()) {
+                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(a);
+                clip.start();
+                
             } else {
                 System.out.println("Cant' find file");
             }
@@ -170,7 +233,7 @@ public class Game extends JPanel implements KeyListener {
     public static void main(String[] args) {
         homepage = new Homepage();
         Game game = new Game();
-        game.playMusic("sound/bg.wav");
+        game.playMusic("sound/bgm_change2.wav");
 
     }
 }

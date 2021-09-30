@@ -39,8 +39,10 @@ public class Display extends JFrame implements ActionListener{
 		if(e.getActionCommand().equals("restart")) {
 			removeContent();
 			Game game = new Game();
+			game.playMusic("sound/bgm_change2.wav");
 			this.getContentPane().add(game);
 			game.requestFocus();
+
 		}
 		else if(e.getActionCommand().equals("home")) {
 			removeContent();
