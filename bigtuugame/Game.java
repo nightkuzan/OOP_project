@@ -20,8 +20,6 @@ public class Game extends JPanel implements KeyListener {
     long point = 0;
     static Display display;
     static Homepage homepage;
-    AudioInputStream am;
-    Clip clipm;
     CharOne char1;
     int a = 200;
     Background background = new Background();
@@ -34,7 +32,6 @@ public class Game extends JPanel implements KeyListener {
         this.setFocusable(true);
         this.setLayout(null);
         char1 = new CharOne(this, 100, 420, 120, 100, 0); // set the character
-
     }
 
     @Override
@@ -62,30 +59,30 @@ public class Game extends JPanel implements KeyListener {
                 if (Event.hitCheck(char1, barrier) && !barrier.getisHit()) {
                     barrier.setisHit(); // check hit
                     playeffectHit("sound/ETC_damage03.wav"); 
-                    double rh = 0;
+                    // double rh = 0;
                     // rh = (3 + Math.floor(Math.random() * 8));
                     // char1.char1health -= rh; // decrease hp if character hit the barrier
                     // a -= (rh * 2);
                     char1.char1health -=100;
                     if (char1.char1health <= 0) { // check health = 0 will die and go to ask for play again
                         playeffectDeath("sound/Cha_death_1.wav");
+                        // playMusic("sound/bgm_change2.wav");
                         homepage.clear(point);
-                        clipm.close();
                         char1.char1health = new CharOne().char1health;
                         this.point = 0;
-                        playeffectLose("sound/b_lose.wav");
+                        // playeffectLose("sound/b_lose.wav");
                         
                     }
-
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    public int getHealth() {
+        return char1.char1health;
+    }
     private void drawchar1health(Graphics2D g2) {
-
         try {
             g2.setColor(Color.RED);
             g2.fillRect(100, 20, a, 25);
@@ -115,6 +112,7 @@ public class Game extends JPanel implements KeyListener {
     }
 
     public double getBarHeight() {
+
         return barrierheight;
     }
 
@@ -142,10 +140,10 @@ public class Game extends JPanel implements KeyListener {
 
     public void playMusic(String musicLocation) {
         try {
-            am = AudioSystem.getAudioInputStream(getClass().getResource("sound/bgm_change2.wav"));
-            clipm = AudioSystem.getClip();
-            clipm.open(am);
-            clipm.start();
+            AudioInputStream am = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
+            Clip clip = AudioSystem.getClip();
+            clip.open(am);
+            clip.start();
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -153,82 +151,40 @@ public class Game extends JPanel implements KeyListener {
     }
     public void playeffectJump(String musicLocation) {
         try {
-            
-            File musicPath = new File(getClass().getResource("sound/jump.wav").getPath());
-
-            if (musicPath.exists()) {
-                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(a);
-                clip.start();
+            AudioInputStream a = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
+            Clip clip = AudioSystem.getClip();
+            clip.open(a);
+            clip.start();
                 
-            } else {
-                System.out.println("Cant' find file");
-            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     public void playeffectDeath(String musicLocation) {
         try {
-            
-            File musicPath = new File(getClass().getResource("sound/Cha_death_1.wav").getPath());
-
-            if (musicPath.exists()) {
-                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(a);
-                clip.start();
-                
-            } else {
-                System.out.println("Cant' find file");
-            }
+            AudioInputStream a = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
+            Clip clip = AudioSystem.getClip();
+            clip.open(a);
+            clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     public void playeffectHit(String musicLocation){
         try {
-            
-            File musicPath = new File(getClass().getResource("sound/ETC_damage03.wav").getPath());
-
-            if (musicPath.exists()) {
-                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(a);
-                clip.start();
-                
-            } else {
-                System.out.println("Cant' find file");
-            }
+            AudioInputStream a = AudioSystem.getAudioInputStream(getClass().getResource(musicLocation));
+            Clip clip = AudioSystem.getClip();
+            clip.open(a);
+            clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-
-    public void playeffectLose(String musicLocation){
-        try {
-            
-            File musicPath = new File(getClass().getResource("sound/b_lose.wav").getPath());
-
-            if (musicPath.exists()) {
-                AudioInputStream a = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(a);
-                clip.start();
-                
-            } else {
-                System.out.println("Cant' find file");
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+    
 
     public static void main(String[] args) {
         homepage = new Homepage();
         Game game = new Game();
         game.playMusic("sound/bgm_change2.wav");
-
     }
 }
