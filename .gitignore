@@ -1,3 +1,15 @@
 .vs
 .DS_Store
 compiled
+bigtuugame/Background.class
+bigtuugame/Barrier$1.class
+bigtuugame/Barrier.class
+bigtuugame/CharOne$1.class
+bigtuugame/CharOne.class
+bigtuugame/Display.class
+bigtuugame/EleButton.class
+bigtuugame/EleLabel.class
+bigtuugame/Event.class
+bigtuugame/Game.class
+bigtuugame/Menu.class
+
